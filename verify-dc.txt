@@ -1,0 +1,91 @@
+﻿homelab-ad verification, 2026-10-14 22:21
+
+===== Domain =====
+
+DNSRoot  NetBIOSName PDCEmulator  
+-------  ----------- -----------  
+corp.lab CORP        DC01.corp.lab
+
+
+
+
+===== DC services =====
+
+Name      Status
+----      ------
+DNS      Running
+KDC      Running
+Netlogon Running
+NTDS     Running
+
+
+
+
+===== SYSVOL / NETLOGON shares =====
+
+Name     Path                                     
+----     ----                                     
+NETLOGON C:\Windows\SYSVOL\sysvol\corp.lab\SCRIPTS
+SYSVOL   C:\Windows\SYSVOL\sysvol                 
+
+
+
+
+===== DNS: SRV record for domain controllers =====
+
+Name                          NameTarget    Port
+----                          ----------    ----
+_ldap._tcp.dc._msdcs.corp.lab dc01.corp.lab  389
+dc01.corp.lab                                   
+
+
+
+
+===== OU tree =====
+OU=Accounting,OU=Users,OU=Company,DC=corp,DC=lab
+OU=Company,DC=corp,DC=lab
+OU=Computers,OU=Company,DC=corp,DC=lab
+OU=Domain Controllers,DC=corp,DC=lab
+OU=Groups,OU=Company,DC=corp,DC=lab
+OU=IT,OU=Users,OU=Company,DC=corp,DC=lab
+OU=Users,OU=Company,DC=corp,DC=lab
+
+
+===== Users =====
+
+SamAccountName Department Enabled
+-------------- ---------- -------
+ivanov.i       IT            True
+petrova.a      IT            True
+smirnov.p      Accounting    True
+kuznetsova.m   Accounting    True
+
+
+
+
+===== Groups and members =====
+GG_Accounting: smirnov.p, kuznetsova.m
+GG_IT: ivanov.i, petrova.a
+
+
+===== Computers =====
+
+Name DistinguishedName                            
+---- -----------------                            
+DC01 CN=DC01,OU=Domain Controllers,DC=corp,DC=lab 
+LAB  CN=LAB,OU=Computers,OU=Company,DC=corp,DC=lab
+
+
+
+
+===== Lockout policy =====
+
+
+LockoutThreshold  : 5
+LockoutDuration   : 00:15:00
+MinPasswordLength : 7
+ComplexityEnabled : True
+
+
+
+
